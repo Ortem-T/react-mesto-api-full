@@ -1,0 +1,11 @@
+.form__save_invalid {
+  opacity: 0.2;
+  cursor: auto;
+  border: 1px solid rgba(0, 0, 0);
+  background: #fff;
+  color: #000;
+}
+
+.form__save_invalid:hover {
+  opacity: 0.2;
+}
