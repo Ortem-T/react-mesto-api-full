@@ -14,7 +14,7 @@ function Login({ onLogin }) {
   
     function handleSubmit(evt) {
       evt.preventDefault();
-      onLogin(password, email);
+      onLogin(email, password);
     }
 
     return (

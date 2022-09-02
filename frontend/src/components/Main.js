@@ -21,7 +21,7 @@ function Main(props) {
       </section>
       <section className="elements">
         <ul className="elements__list">
-          {props.cards.map((card) => (
+          {props.cards.length && props.cards.map((card) => (
             <Card
               key={card._id}
               card={card}

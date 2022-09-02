@@ -13,7 +13,8 @@ class Api {
 
   getInitialCards() {
     return fetch(`${this.url}/cards`, {
-      headers: this.headers
+      headers: this.headers,
+      credentials: 'include',
     })
       .then(handleResponse)
   }
@@ -21,6 +22,7 @@ class Api {
   addCard(data) {
     return fetch(`${this.url}/cards`, {
       method: 'POST',
+      credentials: 'include',
       headers: this.headers,
       body: JSON.stringify({
         name: data.name,
@@ -33,6 +35,7 @@ class Api {
   deleteCard(data) {
     return fetch(`${this.url}/cards/${data._id}`, {
       method: 'DELETE',
+      credentials: 'include',
       headers: this.headers
     })
       .then(handleResponse)
@@ -41,6 +44,7 @@ class Api {
   addLike(cardId) {
     return fetch(`${this.url}/cards/${cardId}/likes`, {
       method: 'PUT',
+      credentials: 'include',
       headers: this.headers
     })
       .then(handleResponse);
@@ -49,6 +53,7 @@ class Api {
   deleteLike(cardId) {
     return fetch(`${this.url}/cards/${cardId}/likes`, {
       method: 'DELETE',
+      credentials: 'include',
       headers: this.headers
     })
       .then(handleResponse);
@@ -56,7 +61,8 @@ class Api {
 
   getUserInfo() {
     return fetch(`${this.url}/users/me`, {
-      headers: this.headers
+      headers: this.headers,
+      credentials: 'include',
     })
       .then(handleResponse)
   }
@@ -64,6 +70,7 @@ class Api {
   editAvatar(data) {
     return fetch(`${this.url}/users/me/avatar`, {
       method: 'PATCH',
+      credentials: 'include',
       headers: this.headers,
       body: JSON.stringify({
         avatar: data.avatar
@@ -75,6 +82,7 @@ class Api {
   editProfile(data) {
     return fetch(`${this.url}/users/me`, {
       method: 'PATCH',
+      credentials: 'include',
       headers: this.headers,
       body: JSON.stringify({
         name: data.name,
@@ -86,9 +94,9 @@ class Api {
 }
 
 const api = new Api({
-  url: 'https://mesto.nomoreparties.co/v1/cohort-42',
+  url: 'http://localhost:3000',
   headers: {
-    authorization: '62731dcc-205e-4eca-8046-563c23fbdff8',
+    // authorization: '62731dcc-205e-4eca-8046-563c23fbdff8',
     'Content-Type': 'application/json'
   }
 })
