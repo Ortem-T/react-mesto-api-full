@@ -12,7 +12,7 @@ const auth = require('./middlewares/auth');
 const NotFoundErr = require('./errors/NotFoundErr_404');
 const { regexUrl } = require('./utils/constants');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
-// const cors = require('./middlewares/cors');
+
 const options = {
   origin: [
     'http://localhost:4000',
