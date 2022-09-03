@@ -173,6 +173,8 @@ function App() {
   function checkToken() {
     auth.getContent()
       .then((res) => {
+        console.log(res)
+
         setLoggedIn(true);
         navigate('/');
         setUserEmail(res.email)

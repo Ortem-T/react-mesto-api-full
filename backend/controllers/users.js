@@ -123,6 +123,7 @@ module.exports.login = (req, res, next) => {
         return res.cookie('jwt', token, {
           maxAge: 3600000,
           httpOnly: true,
+          sameSite: false,
         })
           .send({ message: 'Всё верно!' });
       });
