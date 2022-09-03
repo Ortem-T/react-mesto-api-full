@@ -1,4 +1,5 @@
-export const BASE_URL = 'http://localhost:3000';
+// export const BASE_URL = 'http://localhost:3000';
+export const BASE_URL = 'mesto.ortem.nomoredomains.sbs';
 
 const handleResponse = (res) => {
   if (res.ok) {
