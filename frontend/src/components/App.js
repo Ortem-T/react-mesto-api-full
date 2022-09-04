@@ -171,14 +171,18 @@ function App() {
   }
 
   function checkToken() {
-    auth.getContent()
-      .then((res) => {
-        console.log(res)
-
-        setLoggedIn(true);
-        navigate('/');
-        setUserEmail(res.email)
-      })
+    const token = localStorage.getItem('jwt');
+    if (token) {
+      auth.getContent(token)
+        .then((res) => {
+          setLoggedIn(true);
+          navigate('/');
+          setUserEmail(res.data.email)
+        })
+        .catch((err) => {
+          console.error(err);
+        });
+    }
   }
 
   useEffect(() => {

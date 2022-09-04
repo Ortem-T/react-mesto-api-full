@@ -1,6 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const cookieParser = require('cookie-parser');
+// const cookieParser = require('cookie-parser');
 const { celebrate, Joi } = require('celebrate');
 const { errors } = require('celebrate');
 const cors = require('cors');
@@ -32,7 +32,7 @@ mongoose.connect('mongodb://localhost:27017/mestodb', {
   useNewUrlParser: true,
 });
 
-app.use(cookieParser());
+// app.use(cookieParser());
 
 app.use(requestLogger);
 app.use('*', cors(options));
