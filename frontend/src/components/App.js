@@ -175,10 +175,10 @@ function App() {
     const token = localStorage.getItem('jwt');
     if (token) {
       auth.getContent(token)
-        .then((res) => {
+        .then(({email}) => {
           setLoggedIn(true);
           navigate('/');
-          setUserEmail(res.data.email)
+          setUserEmail(email)
         })
         .catch((err) => {
           console.error(err);
