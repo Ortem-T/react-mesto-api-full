@@ -2,11 +2,11 @@ const handleResponse = (res) => {
   if (res.ok) {
     return res.json();
   }
-    return Promise.reject(`Ошибка: ${res.status}`)
+  return Promise.reject(`Ошибка: ${res.status}`)
 }
 
 class Api {
-  constructor({url, headers}) {
+  constructor({ url, headers }) {
     this.url = url;
     this.headers = headers;
   }
@@ -97,7 +97,8 @@ const api = new Api({
   url: 'https://api.mesto.ortem.nomoredomains.sbs',
   headers: {
     // authorization: '62731dcc-205e-4eca-8046-563c23fbdff8',
-    'Content-Type': 'application/json'
+    'Content-Type': 'application/json',
+    'Authorization': `Bearer ${localStorage.getItem('jwt')}`,
   }
 })
 

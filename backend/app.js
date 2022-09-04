@@ -16,7 +16,7 @@ const { requestLogger, errorLogger } = require('./middlewares/logger');
 const options = {
   origin: [
     'http://localhost:4000',
-    'http://mesto.ortem.nomoredomains.sbs',
+    'https://mesto.ortem.nomoredomains.sbs',
     // 'https://YOUR.github.io',
   ],
   methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],

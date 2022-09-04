@@ -1,5 +1,6 @@
 {
   "name": "mesto-react",
+  "homepage": "https://mesto.ortem.nomoredomains.sbs",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -15,7 +16,7 @@
   },
   "scripts": {
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
+    "deploy": "npm run build && scp -r ./build/* ortem@51.250.14.6:/home/ortem/react-mesto-api-full/frontend",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
