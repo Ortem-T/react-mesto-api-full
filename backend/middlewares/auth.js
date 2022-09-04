@@ -2,11 +2,13 @@ const jwt = require('jsonwebtoken');
 const AuthErr = require('../errors/AuthErr_401');
 
 module.exports = (req, res, next) => {
-  const token = req.cookies.jwt;
-  if (!token) {
+  const { authorization } = req.headers;
+
+  if (!authorization) {
     throw new AuthErr('Необходима авторизация');
   }
 
+  const token = authorization.replace('Bearer ', '');
   let payload;
 
   try {
