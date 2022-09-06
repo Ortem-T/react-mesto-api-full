@@ -1,5 +1,12 @@
 // export const BASE_URL = 'http://localhost:3000';
-export const BASE_URL = 'https://api.mesto.ortem.nomoredomains.sbs';
+// export const BASE_URL = 'https://api.mesto.ortem.nomoredomains.sbs';
+let BASE_URL = '';
+const { NODE_ENV } = process.env;
+if ( NODE_ENV === 'production' ) {
+  BASE_URL = 'https://api.mesto.ortem.nomoredomains.sbs';
+} else {
+  BASE_URL = 'http://localhost:3000'
+}
 
 const handleResponse = (res) => {
   if (res.ok) {
