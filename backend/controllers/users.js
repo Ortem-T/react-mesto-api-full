@@ -7,6 +7,8 @@ const ConflictErr = require('../errors/ConflictErr_409');
 const NotFoundErr = require('../errors/NotFoundErr_404');
 const { SALT_ROUNDS } = require('../utils/constants');
 
+const { NODE_ENV, JWT_SECRET } = process.env;
+
 module.exports.getUsers = (req, res, next) => {
   User.find({})
     .then((users) => res.send(users))
@@ -117,16 +119,10 @@ module.exports.login = (req, res, next) => {
         }
         const token = jwt.sign(
           { _id: user._id },
-          'some-secret-key',
+          NODE_ENV === 'production' ? JWT_SECRET : 'dev-secret',
           { expiresIn: '7d' },
         );
         return res.send({ token });
-        // return res.cookie('jwt', token, {
-        //   maxAge: 3600000,
-        //   httpOnly: true,
-        //   sameSite: true,
-        // })
-        //   .send({ message: 'Всё верно!' });
       });
     })
     .catch(next);
