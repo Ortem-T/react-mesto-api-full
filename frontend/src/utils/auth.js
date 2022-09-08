@@ -7,7 +7,7 @@ if ( NODE_ENV === 'production' ) {
 } else {
   BASE_URL = 'http://localhost:3000'
 }
-console.log(process.env);
+
 const handleResponse = (res) => {
   if (res.ok) {
     return res.json();
