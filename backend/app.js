@@ -24,7 +24,7 @@ const options = {
   allowedHeaders: ['Content-Type', 'origin', 'Authorization'],
   credentials: true,
 };
-console.log(process.env);
+
 app.use(express.json());
 
 mongoose.connect('mongodb://localhost:27017/mestodb', {
@@ -34,11 +34,11 @@ mongoose.connect('mongodb://localhost:27017/mestodb', {
 app.use(requestLogger);
 app.use('*', cors(options));
 
-// app.get('/crash-test', () => {
-//   setTimeout(() => {
-//     throw new Error('Сервер сейчас упадёт');
-//   }, 0);
-// });
+app.get('/crash-test', () => {
+  setTimeout(() => {
+    throw new Error('Сервер сейчас упадёт');
+  }, 0);
+});
 
 app.post(
   '/signin',

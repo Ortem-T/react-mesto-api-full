@@ -93,8 +93,18 @@ class Api {
   }
 }
 
+let url = ''
+
+const { NODE_ENV } = process.env;
+
+if (NODE_ENV === 'production') {
+  url = 'https://api.mesto.ortem.nomoredomains.sbs';
+} else {
+  url = 'http://localhost:3000'
+}
+
 const api = new Api({
-  url: 'https://api.mesto.ortem.nomoredomains.sbs',
+  url: url,
   headers: {
     // authorization: '62731dcc-205e-4eca-8046-563c23fbdff8',
     'Content-Type': 'application/json',
