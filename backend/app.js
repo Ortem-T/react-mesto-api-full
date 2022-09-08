@@ -24,7 +24,7 @@ const options = {
   allowedHeaders: ['Content-Type', 'origin', 'Authorization'],
   credentials: true,
 };
-
+console.log(process.env);
 app.use(express.json());
 
 mongoose.connect('mongodb://localhost:27017/mestodb', {
