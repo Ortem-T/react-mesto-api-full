@@ -10,6 +10,7 @@ const app = express();
 const { login, createUser } = require('./controllers/users');
 const auth = require('./middlewares/auth');
 const NotFoundErr = require('./errors/NotFoundErr_404');
+const handleError = require('./errors/handleError');
 const { regexUrl } = require('./utils/constants');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 
@@ -17,6 +18,7 @@ const options = {
   origin: [
     'http://localhost:4000',
     'https://mesto.ortem.nomoredomains.sbs',
+    'http://mesto.ortem.nomoredomains.sbs',
   ],
   methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
   preflightContinue: false,
@@ -77,16 +79,6 @@ app.use('*', (req, res, next) => {
 app.use(errorLogger);
 
 app.use(errors());
-app.use((err, req, res, next) => {
-  const { statusCode = 500, message } = err;
-  res
-    .status(err.statusCode)
-    .send({
-      message: statusCode === 500
-        ? 'Произошла ошибка на сервере'
-        : message,
-    });
-  next();
-});
+app.use(handleError);
 
 app.listen(PORT);
